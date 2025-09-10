@@ -8,12 +8,12 @@ import {
 } from "react-native";
 import PrimeVideoLogo from "../../assets/prime_video.png";
 import AmazonLogo from "../../assets/amazon_logo.png";
-import MovieTheWheel from "../../assets/movies/the_wheel_of_time.png";
 import { styles } from "./style";
 import { MOVIESWATCHING } from "../../utils/moviesWatching";
 import { MoviesCard } from "../../components/MoviesCard";
 import { MOVIESWATCH } from "../../utils/moviesWatch";
 import { MOVIESCRIME } from "../../utils/moviesCrimes";
+import { MOVIESARRIVED } from "../../utils/moviesJustArrived";
 
 export const Home = () => {
   return (
@@ -26,17 +26,17 @@ export const Home = () => {
       <View style={styles.category}>
         <View>
           <TouchableOpacity>
-            <Text style={styles.categoryText}>Home</Text>
+            <Text style={styles.categoryText}>Início</Text>
           </TouchableOpacity>
         </View>
         <View>
           <TouchableOpacity>
-            <Text style={styles.categoryText}>TV Shows</Text>
+            <Text style={styles.categoryText}>Séries</Text>
           </TouchableOpacity>
         </View>
         <View>
           <TouchableOpacity>
-            <Text style={styles.categoryText}>Movies</Text>
+            <Text style={styles.categoryText}>Filmes</Text>
           </TouchableOpacity>
         </View>
         <View>
@@ -46,10 +46,17 @@ export const Home = () => {
         </View>
       </View>
 
-      <ScrollView> {/*Habilita poder escrolar a página */}
+      <ScrollView showsHorizontalScrollIndicator={false}> {/*Habilita poder escrolar a página */}
       {/* ------- Thumbnails ------- */}
+      <Text style={styles.continueWatchingText}>Acabaram de chegar</Text>
       <TouchableOpacity style={styles.movieImageThumbnail}>
-        <Image source={MovieTheWheel}></Image>
+        <FlatList
+        data = {MOVIESARRIVED}
+        keyExtractor={(item) => item.id} //Para puxar cada id no "MOVIESWATCHING"
+        renderItem={({ item }) => <MoviesCard movieURL={item.moviesURL} />}
+        horizontal //Deixar a lista na horizontal
+        showsHorizontalScrollIndicator={false} //Ao deixar várias imagens da lista na horizontal, ele automaticamente cria uma barra de rolagem embaixo, isso desativa ela
+        style={styles.contentList}></FlatList>
       </TouchableOpacity>
       
         <Text style={styles.continueWatchingText}>Continue Assistindo...</Text>
@@ -62,7 +69,7 @@ export const Home = () => {
           style={styles.contentList}
         />
 
-        <Text style={styles.continueWatchingText}>Mais Assistidos</Text>
+        <Text style={styles.continueWatchingText}>Idiomas</Text>
         <FlatList
           data={MOVIESWATCH}
           keyExtractor={(item) => item.id} //Para puxar cada id no "MOVIESWATCHING"
