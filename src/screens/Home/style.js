@@ -41,6 +41,23 @@ export const styles = StyleSheet.create({ //Export na frente para exportar para 
     fontSize:18,
     marginTop:15,
     fontWeight:"700"
+  },
+  footer:{
+    width:"100%",
+    flexDirection:"row",
+    justifyContent:"space-around",
+    alignItems:"center",
+    paddingVertical: 10,
+    backgroundColor: "#3a4c61ff",
+    marginTop: 10
+  },
+  label:{
+    color:"#fff",
+    fontSize:12,
+  },
+  button:{
+    justifyContent:"center",
+    alignItems:"center"
   }
 
 });

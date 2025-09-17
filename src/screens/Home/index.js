@@ -14,6 +14,7 @@ import { MoviesCard } from "../../components/MoviesCard";
 import { MOVIESWATCH } from "../../utils/moviesWatch";
 import { MOVIESCRIME } from "../../utils/moviesCrimes";
 import { MOVIESARRIVED } from "../../utils/moviesJustArrived";
+import Icon  from "react-native-vector-icons/Ionicons";//Biblioteca do react-native
 
 export const Home = () => {
   return (
@@ -88,7 +89,22 @@ export const Home = () => {
           showsHorizontalScrollIndicator={false} //Ao deixar várias imagens da lista na horizontal, ele automaticamente cria uma barra de rolagem embaixo, isso desativa ela
           style={styles.contentList}
         />
+
       </ScrollView>
+      <View style={styles.footer}> 
+        <TouchableOpacity style={styles.button}>
+          <Icon name="home" size={25} color={"#fff"}></Icon>
+          <Text style={styles.label}>Inicio</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button}>
+          <Icon name="download" size={25} color={"#fff"}></Icon>
+          <Text style={styles.label}>Downloads</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button}>
+          <Icon name="construct" size={25} color={"#fff"}></Icon>
+          <Text style={styles.label}>Configurações</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
