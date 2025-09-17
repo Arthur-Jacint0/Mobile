@@ -14,7 +14,7 @@ import { MoviesCard } from "../../components/MoviesCard";
 import { MOVIESWATCH } from "../../utils/moviesWatch";
 import { MOVIESCRIME } from "../../utils/moviesCrimes";
 import { MOVIESARRIVED } from "../../utils/moviesJustArrived";
-import Icon  from "react-native-vector-icons/Ionicons";//Biblioteca do react-native
+import Icon from "react-native-vector-icons/Ionicons"; //Biblioteca do react-native
 
 export const Home = () => {
   return (
@@ -47,19 +47,21 @@ export const Home = () => {
         </View>
       </View>
 
-      <ScrollView showsHorizontalScrollIndicator={false}> {/*Habilita poder escrolar a página */}
-      {/* ------- Thumbnails ------- */}
-      <Text style={styles.continueWatchingText}>Acabaram de chegar</Text>
-      <TouchableOpacity style={styles.movieImageThumbnail}>
-        <FlatList
-        data = {MOVIESARRIVED}
-        keyExtractor={(item) => item.id} //Para puxar cada id no "MOVIESWATCHING"
-        renderItem={({ item }) => <MoviesCard movieURL={item.moviesURL} />}
-        horizontal //Deixar a lista na horizontal
-        showsHorizontalScrollIndicator={false} //Ao deixar várias imagens da lista na horizontal, ele automaticamente cria uma barra de rolagem embaixo, isso desativa ela
-        style={styles.contentList}></FlatList>
-      </TouchableOpacity>
-      
+      <ScrollView showsHorizontalScrollIndicator={false}>
+        {" "}
+        {/*Habilita poder escrolar a página */}
+        {/* ------- Thumbnails ------- */}
+        <Text style={styles.continueWatchingText}>Acabaram de chegar</Text>
+        <TouchableOpacity style={styles.movieImageThumbnail}>
+          <FlatList
+            data={MOVIESARRIVED}
+            keyExtractor={(item) => item.id} //Para puxar cada id no "MOVIESWATCHING"
+            renderItem={({ item }) => <MoviesCard movieURL={item.moviesURL} />}
+            horizontal //Deixar a lista na horizontal
+            showsHorizontalScrollIndicator={false} //Ao deixar várias imagens da lista na horizontal, ele automaticamente cria uma barra de rolagem embaixo, isso desativa ela
+            style={styles.contentList}
+          ></FlatList>
+        </TouchableOpacity>
         <Text style={styles.continueWatchingText}>Continue Assistindo...</Text>
         <FlatList
           data={MOVIESWATCHING}
@@ -69,7 +71,6 @@ export const Home = () => {
           showsHorizontalScrollIndicator={false} //Ao deixar várias imagens da lista na horizontal, ele automaticamente cria uma barra de rolagem embaixo, isso desativa ela
           style={styles.contentList}
         />
-
         <Text style={styles.continueWatchingText}>Idiomas</Text>
         <FlatList
           data={MOVIESWATCH}
@@ -79,7 +80,6 @@ export const Home = () => {
           showsHorizontalScrollIndicator={false} //Ao deixar várias imagens da lista na horizontal, ele automaticamente cria uma barra de rolagem embaixo, isso desativa ela
           style={styles.contentList}
         />
-
         <Text style={styles.continueWatchingText}>Filmes de suspense</Text>
         <FlatList
           data={MOVIESCRIME}
@@ -89,9 +89,11 @@ export const Home = () => {
           showsHorizontalScrollIndicator={false} //Ao deixar várias imagens da lista na horizontal, ele automaticamente cria uma barra de rolagem embaixo, isso desativa ela
           style={styles.contentList}
         />
-
+        <View>
+          <Text style={{ color: "#fff" }}> Arthur Ricardo Jacinto</Text>
+        </View>
       </ScrollView>
-      <View style={styles.footer}> 
+      <View style={styles.footer}>
         <TouchableOpacity style={styles.button}>
           <Icon name="home" size={25} color={"#fff"}></Icon>
           <Text style={styles.label}>Inicio</Text>
